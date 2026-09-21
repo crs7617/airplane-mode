@@ -2,51 +2,53 @@
  "actions": [],
  "allow_bulk_edit": 1,
  "allow_rename": 1,
- "autoname": "prompt",
- "creation": "2026-09-21 12:02:09.347940",
+ "autoname": "{airline}-{#####}",
+ "creation": "2026-09-21 16:34:45.383117",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_jiep",
-  "code",
-  "city",
-  "country"
+  "section_break_udur",
+  "model",
+  "airline",
+  "capacity"
  ],
  "fields": [
   {
-   "fieldname": "section_break_jiep",
+   "fieldname": "section_break_udur",
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "code",
+   "fieldname": "model",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "code",
+   "label": "model",
    "reqd": 1
   },
   {
-   "fieldname": "city",
-   "fieldtype": "Data",
+   "fieldname": "airline",
+   "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "city",
+   "label": "airlines",
+   "options": "Airline",
    "reqd": 1
   },
   {
-   "fieldname": "country",
-   "fieldtype": "Data",
+   "fieldname": "capacity",
+   "fieldtype": "Int",
    "in_list_view": 1,
-   "label": "country",
+   "label": "capacity",
+   "non_negative": 1,
    "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-09-21 16:53:06.849758",
+ "modified": "2026-09-21 16:54:04.148333",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
- "name": "Airport",
- "naming_rule": "Set by user",
+ "name": "Airplane",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

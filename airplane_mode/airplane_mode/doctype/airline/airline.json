@@ -20,25 +20,28 @@
   {
    "fieldname": "founding_year",
    "fieldtype": "Int",
+   "label": "founding-year",
    "non_negative": 1
   },
   {
    "fieldname": "customer_care_number",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "label": "number",
    "reqd": 1
   },
   {
    "fieldname": "headquarters",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "label": "hq",
    "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-09-21 11:57:25.171210",
+ "modified": "2026-09-21 16:53:43.459954",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airline",
