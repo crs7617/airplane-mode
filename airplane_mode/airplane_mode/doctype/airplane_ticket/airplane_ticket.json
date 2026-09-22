@@ -18,7 +18,8 @@
   "flight",
   "departure_date",
   "departure_time",
-  "duration_of_flight"
+  "duration_of_flight",
+  "status"
  ],
  "fields": [
   {
@@ -100,13 +101,21 @@
    "fieldtype": "Duration",
    "label": "duration",
    "reqd": 1
+  },
+  {
+   "default": "Booked",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "status",
+   "options": "Booked\nChecked-In\nBoarded",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-09-21 20:18:51.319589",
+ "modified": "2026-09-22 09:18:32.680358",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",
