@@ -1,0 +1,7 @@
+<div>
+	<a href="/{{ doc.route |e }}">
+		{{ frappe.db.get_value("Airplane", doc.airplane, "airline") |e }} —
+		{{ doc.src_airport_code |e }} to {{ doc.des_airport_code |e }}
+		on {{ frappe.utils.format_date(doc.date_of_departure, "d MMMM, YYYY") |e }}
+	</a>
+</div>

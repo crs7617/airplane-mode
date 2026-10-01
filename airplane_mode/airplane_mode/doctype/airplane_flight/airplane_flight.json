@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_bulk_edit": 1,
+ "allow_guest_to_view": 1,
  "allow_rename": 1,
  "autoname": "format:{airplane}-{MM}-{YYYY}-{#####}",
  "creation": "2026-10-01 09:34:43.875762",
@@ -17,7 +18,9 @@
   "src_airport",
   "des_airport",
   "src_airport_code",
-  "des_airport_code"
+  "des_airport_code",
+  "is_published",
+  "route"
  ],
  "fields": [
   {
@@ -96,10 +99,23 @@
    "fieldtype": "Data",
    "label": "des_airport_code",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_published",
+   "fieldtype": "Check",
+   "label": "is_published"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "route"
   }
  ],
  "grid_page_length": 50,
+ "has_web_view": 1,
  "index_web_pages_for_search": 1,
+ "is_published_field": "is_published",
  "is_submittable": 1,
  "links": [
   {
@@ -107,7 +123,7 @@
    "link_fieldname": "flight"
   }
  ],
- "modified": "2026-10-01 10:02:21.967940",
+ "modified": "2026-10-01 10:27:20.256415",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",
@@ -128,6 +144,7 @@
    "write": 1
   }
  ],
+ "route": "flights",
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
  "sort_field": "creation",
