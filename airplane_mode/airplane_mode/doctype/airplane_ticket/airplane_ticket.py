@@ -1,7 +1,7 @@
 # Copyright (c) 2026, Sairam and contributors
 # For license information, please see license.txt
 
-# import frappe
+import frappe
 from frappe.model.document import Document
 
 class AirplaneTicket(Document):
@@ -21,3 +21,6 @@ class AirplaneTicket(Document):
     def calculate_total_amount(self):
         addon_total = sum(row.amount or 0 for row in self.add_ons)
         self.total_amount = (self.flight_price or 0) + addon_total
+    def before_submit(self):
+             if self.status != "Boarded":
+                   frappe.throw("Cannot submit ticket unless status is Boarded")
