@@ -2,6 +2,8 @@
 # For license information, please see license.txt
 
 import frappe
+import random
+import string
 from frappe.model.document import Document
 
 class AirplaneTicket(Document):
@@ -21,6 +23,10 @@ class AirplaneTicket(Document):
     def calculate_total_amount(self):
         addon_total = sum(row.amount or 0 for row in self.add_ons)
         self.total_amount = (self.flight_price or 0) + addon_total
+        
     def before_submit(self):
              if self.status != "Boarded":
                    frappe.throw("Cannot submit ticket unless status is Boarded")
+
+    def before_insert(self):
+        self.seat = f"{random.randint(1, 99)}{random.choice(string.ascii_uppercase[:5])}"
