@@ -11,8 +11,6 @@
   "section_break_fd1d",
   "amended_from",
   "passenger",
-  "source_airport",
-  "destination_airport",
   "source_airport_code",
   "destination_airport_code",
   "flight",
@@ -20,7 +18,10 @@
   "departure_time",
   "duration_of_flight",
   "status",
-  "add_ons"
+  "add_ons",
+  "flight_price",
+  "total_amount",
+  "seat"
  ],
  "fields": [
   {
@@ -46,23 +47,7 @@
    "reqd": 1
   },
   {
-   "fieldname": "source_airport",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "src-airport",
-   "options": "Airport",
-   "reqd": 1
-  },
-  {
-   "fieldname": "destination_airport",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "dsn-airport",
-   "options": "Airport",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "source_airport.code",
+   "fetch_from": "flight.src_airport_code",
    "fieldname": "source_airport_code",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -71,7 +56,7 @@
    "reqd": 1
   },
   {
-   "fetch_from": "destination_airport.code",
+   "fetch_from": "flight.des_airport_code",
    "fieldname": "destination_airport_code",
    "fieldtype": "Data",
    "label": "des-air-code",
@@ -82,22 +67,25 @@
    "fieldname": "flight",
    "fieldtype": "Link",
    "label": "flight",
-   "options": "Airplane",
+   "options": "Airplane Flight",
    "reqd": 1
   },
   {
+   "fetch_from": "flight.date_of_departure",
    "fieldname": "departure_date",
    "fieldtype": "Date",
    "label": "dept-date",
    "reqd": 1
   },
   {
+   "fetch_from": "flight.time_of_departure",
    "fieldname": "departure_time",
    "fieldtype": "Time",
    "label": "dept-time",
    "reqd": 1
   },
   {
+   "fetch_from": "flight.duration",
    "fieldname": "duration_of_flight",
    "fieldtype": "Duration",
    "label": "duration",
@@ -116,13 +104,30 @@
    "fieldtype": "Table",
    "label": "add-ons",
    "options": "Airplane Ticket Add-on Item"
+  },
+  {
+   "fieldname": "flight_price",
+   "fieldtype": "Currency",
+   "label": "flight_price",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "total_amount"
+  },
+  {
+   "fieldname": "seat",
+   "fieldtype": "Data",
+   "label": "seat",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-10-01 09:24:39.252669",
+ "modified": "2026-10-01 09:56:23.416083",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",
