@@ -10,7 +10,8 @@
   "section_break_pnrj",
   "first_name",
   "last_name",
-  "dob"
+  "dob",
+  "full_name"
  ],
  "fields": [
   {
@@ -35,6 +36,12 @@
    "in_list_view": 1,
    "label": "dob",
    "reqd": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "full name",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
@@ -45,7 +52,7 @@
    "link_fieldname": "passenger"
   }
  ],
- "modified": "2026-09-22 09:25:24.686703",
+ "modified": "2026-10-01 09:13:39.911242",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Flight Passenger",
@@ -69,5 +76,6 @@
  "rows_threshold_for_grid_search": 20,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "full_name"
 }
