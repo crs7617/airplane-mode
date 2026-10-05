@@ -4,7 +4,7 @@
 import frappe
 import random
 import string
-from frappe.model.document import Document
+from frappe.model.document import Document  # type: ignore[reportMissingImports]
 
 class AirplaneTicket(Document):
     def validate(self):
