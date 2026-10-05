@@ -32,9 +32,9 @@ class AirplaneTicket(Document):
         self.seat = f"{random.randint(1, 99)}{random.choice(string.ascii_uppercase[:5])}"
 
         def validate(self):
-        self.remove_duplicate_addons()
-        self.calculate_total_amount()
-        self.check_overbooking()
+             self.remove_duplicate_addons()
+             self.calculate_total_amount()
+             self.check_overbooking()
 
     def check_overbooking(self):
         if not self.flight:

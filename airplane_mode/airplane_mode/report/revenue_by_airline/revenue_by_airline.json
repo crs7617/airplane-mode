@@ -1,0 +1,32 @@
+{
+ "add_total_row": 1,
+ "add_translate_data": 0,
+ "columns": [],
+ "creation": "2026-10-05 17:31:41.844017",
+ "disable_prepared_report_automation": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "doctype_to_sync": [],
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": null,
+ "modified": "2026-10-05 17:31:41.844017",
+ "modified_by": "Administrator",
+ "module": "Airplane Mode",
+ "name": "Revenue by Airline",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Airline",
+ "report_name": "Revenue by Airline",
+ "report_script": "import frappe\n\ndef execute(filters=None):\n    columns = [\n        {\"label\": \"Airline\", \"fieldname\": \"airline\", \"fieldtype\": \"Link\", \"options\": \"Airline\", \"width\": 200},\n        {\"label\": \"Revenue\", \"fieldname\": \"revenue\", \"fieldtype\": \"Currency\", \"width\": 150},\n    ]\n\n    Airline = frappe.qb.DocType(\"Airline\")\n    Airplane = frappe.qb.DocType(\"Airplane\")\n    Flight = frappe.qb.DocType(\"Airplane Flight\")\n    Ticket = frappe.qb.DocType(\"Airplane Ticket\")\n\n    query = (\n        frappe.qb.from_(Airline)\n        .left_join(Airplane).on(Airplane.airline == Airline.name)\n        .left_join(Flight).on(Flight.airplane == Airplane.name)\n        .left_join(Ticket).on((Ticket.flight == Flight.name) & (Ticket.docstatus == 1))\n        .select(Airline.name.as_(\"airline\"), frappe.qb.functions.Sum(Ticket.total_amount).as_(\"revenue\"))\n        .groupby(Airline.name)\n    )\n    data = query.run(as_dict=True)\n    for row in data:\n        row.revenue = row.revenue or 0\n\n    chart = {\n        \"data\": {\n            \"labels\": [r[\"airline\"] for r in data],\n            \"datasets\": [{\"values\": [r[\"revenue\"] for r in data]}],\n        },\n        \"type\": \"donut\",\n    }\n    report_summary = [{\"value\": sum(r[\"revenue\"] for r in data), \"label\": \"Total Revenue\", \"datatype\": \"Currency\"}]\n\n    return columns, data, None, chart, report_summary",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "snapshot_report": 0,
+ "timeout": 0
+}
